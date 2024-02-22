@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f1f1f1;
+            padding: 20px;
+            font-family: Arial;
+        }
+
+        /* Center website */
+        .main {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        h1 {
+            font-size: 50px;
+            word-break: break-all;
+        }
+
+        .row {
+            margin: 10px -16px;
+        }
+
+        /* Add padding BETWEEN each column */
+        .row,
+        .row>.column {
+            padding: 8px;
+        }
+
+        /* Create three equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 33.33%;
+            display: none;
+            /* Hide all elements by default */
+        }
+
+        /* Clear floats after rows */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Content */
+        .content {
+            background-color: white;
+            padding: 10px;
+        }
+
+        /* The "show" class is added to the filtered elements */
+        .show {
+            display: block;
+        }
+
+        /* Style the buttons */
+        .btn {
+            border: none;
+            outline: none;
+            padding: 12px 16px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #ddd;
+        }
+
+        .btn.active {
+            background-color: #666;
+            color: white;
+        }
+
+
+
+            /* Style the Image Used to Trigger the Modal */
+    .myImg {
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .myImg:hover {
+        opacity: 0.7;
+    }
+
+    /* The Modal (background) */
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 100px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.9);
+        /* Black w/ opacity */
+    }
+
+    /* Modal Content (Image) */
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
+
+    /* Caption of Modal Image (Image Text) - Same Width as the Image */
+    #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+        text-align: center;
+        color: #ccc;
+        padding: 10px 0;
+        height: 150px;
+    }
+
+    /* Add Animation - Zoom in the Modal */
+    .modal-content,
+    #caption {
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @keyframes zoom {
+        from {
+            transform: scale(0);
+        }
+
+        to {
+            transform: scale(1);
+        }
+    }
+
+    /* The Close Button */
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @media only screen and (max-width: 700px) {
+        .modal-content {
+            width: 100%;
+        }
+    }
+
+
+    </style>
+</head>
+
+<body>
+
+    <!-- MAIN (Center website) -->
+    <div class="main">
+
+        <h1>Sahil Rajendra Gaonkar</h1>
+
+        <a  href="index.html" target="_blank" style="color:rgb(17, 41, 226); font-size:x-large;"><i class="fa fa-hand-o-right w3-hover-opacity"></i>&nbsp;&nbsp;<b>Homepage</b>&nbsp;&nbsp;<i class="fa fa-hand-o-left w3-hover-opacity"></i></a>
+
+
+        <hr>
+
+        <h2>CERTIFICATES AND ACHIEVEMENTS</h2>
+
+        <div id="myBtnContainer">
+            <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+            <button class="btn" onclick="filterSelection('cocurricular')"> CO-CURRICULAR</button>
+            <button class="btn" onclick="filterSelection('extracurricular')"> EXTRACURRICULAR</button>
+            <button class="btn" onclick="filterSelection('miscellaneous')"> MISCELLANEOUS </button>
+        </div>
+
+        <!-- Portfolio Gallery Grid -->
+        <div class="row">
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/merit1.jpg" alt="Mountains" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Awarded Merit Scholarship by APARANT IRON AND STEEL PRIVATE LIMITED for securing 1st highest
+                        marks in 1st Standard in the academic year 2002-2003.</p>
+                </div>
+            </div>
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/merit2.jpg" alt="Mountains" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Awarded Merit Scholarship by APARANT IRON AND STEEL PRIVATE LIMITED for securing 1st highest
+                        marks in 2nd Standard in the academic year 2003-2004.</p>
+                </div>
+            </div>
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/merit4.jpg" alt="Mountains" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Awarded Merit Scholarship by APARANT IRON AND STEEL PRIVATE LIMITED for securing 1st highest
+                        marks in 4th Standard in the academic year 2005-2006.</p>
+                </div>
+            </div>
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/merit3.jpg" alt="Mountains" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Awarded Merit Scholarship by APARANT IRON AND STEEL PRIVATE LIMITED for securing 1st highest
+                        marks in 3rd Standard in the academic year 2004-2005.</p>
+                </div>
+            </div>
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/merit3.jpg" alt="Mountains" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Received the degree of Bachelor of Engineering in Computer with First Class with Distincation clearing the examination held in May 2019.</p>
+                </div>
+            </div>
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/diplomahn.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Completed Diploma in Computer Hardware and Networking and obtained A grade under Computer Time
+                        Computer Academy on 05 August 2012.</p>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/tecompf.jpg" alt="Lights" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Secured 1st rank in the Class at University Examination for the academic year 2017-2018.</p>
+                </div>
+            </div>
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/secompf.jpg" alt="Lights" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Secured 1st rank in the Class at University Examination for the academic year 2016-2017.</p>
+                </div>
+            </div>
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/fecompf.jpg" alt="Lights" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Secured 1st rank in the Class at University Examination for the academic year 2015-2016.</p>
+                </div>
+            </div>
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/intern.jpg" alt="Lights" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Completed Foundation Program Internship under the aegis of the Infosys Campus Connect Program.
+                    </p>
+                </div>
+            </div>
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/blindcode.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated and won 2nd place in the BLIND CODING event of “TECHTWISTER-17” held on 11th April
+                        2017.</p>
+                </div>
+            </div>
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/fakenews.jpg" alt="Nature" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Presented the paper titled Detection of Online Fake News : A Survey in ViTECoN’19 in association
+                        with IEEE Madras Section organized by the SENSE , Vellore Institute of Technology ,Tamil Nadu
+                        held on 30th & 31st March 2019. </p>
+                </div>
+            </div>
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/codeitviolet.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in CODEITVIOLET contest and secured 1st place in the event “Technovation 2k19” held
+                        on 15th March 2019.</p>
+                </div>
+            </div>
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/project2nd.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated and won 2nd place in the SOFTWARE PROJECTO event of “TECHTWISTER -19” held on 1st &
+                        2nd April 2019.</p>
+                </div>
+            </div>
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/untest.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Secured 72 percent marks in 55th Annual All India UN Information Test conducted by Council for UN
+                        Information, a wing of USO on 25th August 2012.</p>
+                </div>
+            </div>
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/untest.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Secured 90 percent marks in PHP certification at Manipal Institute Of Computer Education during the period 07 Jan 2018 to 07 March 2018.</p>
+                </div>
+            </div>
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/smartindia.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participation certificate received for submitting an idea for ‘Smart India Hackathon 2017’ under
+                        Department of Defence Production.</p>
+                </div>
+            </div>
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/php.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Successfully completed PHP and MySQL test organized at S.R.I.E. I. T. by Poonam Sinai Kenkre with
+                        course material provided by the Talk To A Teacher project at IIT Bombay held on 22nd January
+                        2018 .</p>
+                </div>
+            </div>
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/ctraining.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Successfully completed C test organized at S.R.I.E. I. T. by DEEPMALA KALE with course material
+                        provided by the Talk To A Teacher project at IIT Bombay held on 05th May 2017.</p>
+                </div>
+            </div>
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/java.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Successfully completed Java test organized at S.R.I.E. I. T. by DEEPMALA KALE with course
+                        material provided by the Talk To A Teacher project at IIT Bombay held on 30th October 2018.</p>
+                </div>
+            </div>
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/blender.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Successfully completed Blender test organized at S.R.I.E. I. T. by Poonam Sinai Kenkre with
+                        course material provided by the Talk To A Teacher project at IIT Bombay held on 25th April 2018.
+                    </p>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/gmfcessay.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Secured 1st place in Essay Writing Competition of IT Club Activity held in Goa Multi Faculty
+                        College on 17 December 2014.</p>
+                </div>
+            </div>
+
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/android.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in the 2 days "ANDROID DEVELOPMENT WORKSHOP" from 31st August to 1st September 2017
+                        conducted by Sapna Technologies.</p>
+                </div>
+            </div>
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/crypto.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Attended seminar on “CRYPTOCURRENCY AND BLOCKCHAIN” organised by Techignite Online Services LLP
+                        on 31st January 2018.
+                    </p>
+                </div>
+            </div>
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/ibc.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Attended a Blockchain Workshop conducted by Government of Goa in association with NITI Aayog and
+                        Nucleus Vision on 5th August 2018. </p>
+                </div>
+            </div>
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/iot.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in the 2 days workshop on “Internet of Things(IOT)” during 08th April and 9th April
+                        2017 conducted by PRALHAD P. CHHABRIA RESEARCH CENTER.</p>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/android.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in the 2 days hands on workshop on "Serverless Computing & using Google Cloud Functions to build web apps" held on 
+                        26th & 27th July 2018 conducted by Ajency.in.</p>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/projecto2017.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in PROJECTO event of “TECHTWISTER-17” held on 11th April
+                        2017.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/projecto2018.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in PROJECTO event of “TECHTWISTER-18” held on 6th April
+                        2018.
+                    </p>
+                </div>
+            </div>
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/line2018.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in LINE FOLLOWER event of “TECHTWISTER-18” held on 6th April
+                        2018.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/techquiz2016.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in TECH QUIZ event of “TECHTWISTER 2K16”.</p>
+                </div>
+            </div>
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/blind2019.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in the BLIND CODING event of “TECHTWISTER-19” held on 1st April 2019.</p>
+                </div>
+            </div>
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/quiz2018.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in QUIZ event of “TECHTWISTER-18” held on 6th April
+                        2018.
+                    </p>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/notclick.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in the !CLICK event of “TECHTWISTER-19” held on 1st April 2019.</p>
+                </div>
+            </div>
+
+
+            <div class="column cocurricular">
+                <div class="content">
+                    <img src="./img/coderun2016.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>CO-CURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in CODE RUN event of “TECHTWISTER 2K16”.</p>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            <div class="column extracurricular">
+                <div class="content">
+                    <img src="./img/cric2017.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>EXTRACURRICULAR ACHIEVEMENTS</h4>
+                    <p>Member of the team that secured the 1st place in CRICKET for Inter Department Sports Tournament 2017.</p>
+                </div>
+            </div>
+
+
+            <div class="column extracurricular">
+                <div class="content">
+                    <img src="./img/volley2017.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>EXTRACURRICULAR ACHIEVEMENTS</h4>
+                    <p>Captain of the team that secured the 1st place in VOLLEYBALL for Inter Department Sports Tournament 2017.</p>
+                </div>
+            </div>
+
+            <div class="column extracurricular">
+                <div class="content">
+                    <img src="./img/volley2018.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>EXTRACURRICULAR ACHIEVEMENTS</h4>
+                    <p>Captain of the team that secured the 1st place in VOLLEYBALL for Inter Department Tournament held during Academic year 2018-2019</p>
+                </div>
+            </div>
+
+            <div class="column extracurricular">
+                <div class="content">
+                    <img src="./img/cric2018.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>EXTRACURRICULAR ACHIEVEMENTS</h4>
+                    <p>Member of the team that secured the 1st place in CRICKET for Inter Department Tournament held during Academic year 2018-2019</p>
+                </div>
+            </div>
+
+            <div class="column extracurricular">
+                <div class="content">
+                    <img src="./img/foot2015.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>EXTRACURRICULAR ACHIEVEMENTS</h4>
+                    <p>Member of the team that secured the 1st place in FOOTBALL for Inter Department held during Academic year 2015-2016.</p>
+                </div>
+            </div>
+
+            <div class="column extracurricular">
+                <div class="content">
+                    <img src="./img/cric2015.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>EXTRACURRICULAR ACHIEVEMENTS</h4>
+                    <p>Member of the team that secured the 2nd place in CRICKET for Inter Department held during Academic year 2015-2016.</p>
+                </div>
+            </div>
+
+            <div class="column extracurricular">
+                <div class="content">
+                    <img src="./img/ghumat.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>EXTRACURRICULAR ACHIEVEMENTS</h4>
+                    <p>Member of the team that secured the 1st place in Inter Department Ghumat Aarti Competition.</p>
+                </div>
+            </div>
+
+
+            <div class="column extracurricular">
+                <div class="content">
+                    <img src="./img/gahssing.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>EXTRACURRICULAR ACHIEVEMENTS</h4>
+                    <p>Member of the group that secured 2
+                        nd place in the Patriotic Singing Competition at
+                        Guardian Angel Higher Secondary School held on 14 August 2013.</p>
+                </div>
+            </div>
+
+            <div class="column extracurricular">
+                <div class="content">
+                    <img src="./img/kemfort.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>EXTRACURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in the Cultural Exchange Programme held on 14 September 2010 at
+                        Kempfort Public School.</p>
+                </div>
+            </div>
+
+            <div class="column extracurricular">
+                <div class="content">
+                    <img src="./img/guvolley.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>EXTRACURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in the Inter-Collegiate Volleyball Championship organised by Goa University Taleigao
+                        Plateau on 14 Feburary 2018.</p>
+                </div>
+            </div>
+
+            <div class="column extracurricular">
+                <div class="content">
+                    <img src="./img/painting.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>EXTRACURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated and secured A+ grade in the Painting contest organised by The National
+                        Academy For Art Education, Pune - 30 held on 18th October 2006.</p>
+                </div>
+            </div>
+
+
+            <div class="column extracurricular">
+                <div class="content">
+                    <img src="./img/gufoot.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>EXTRACURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in the Inter-Collegiate Football Championship organised by Goa University Taleigao
+                        Plateau on 23 August 2016.</p>
+                </div>
+            </div>
+
+
+            <div class="column extracurricular">
+                <div class="content">
+                    <img src="./img/guvolley2017.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>EXTRACURRICULAR ACHIEVEMENTS</h4>
+                    <p>Participated in the Inter-Collegiate Volleyball Championship organised by Goa University Taleigao
+                        Plateau on 06 January 2017.</p>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/poststdexp.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Received Postman Student Expert badge</p>
+                </div>
+            </div>
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/postapitest.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Received Postman API Tester badge</p>
+                </div>
+            </div>
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/post30day.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Received 30 Days Of Postman badge for developer</p>
+                </div>
+            </div>
+
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/post15day.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>15 days of Postman - for testers</p>
+                </div>
+            </div>
+
+
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/hack2020.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Successfully completed Hacktoberfest2020</p>
+                </div>
+            </div>
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/wtm.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Completed WTM Intensive Program 2.0 organised by WTM Goa and completed project using HTML, CSS,
+                        Javascript & Bootstrap</p>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/30daysweb.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Participation certificate received for participating in 30 Days of Web development program</p>
+                </div>
+            </div>
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/apifesttl.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>API Fest 2022 Team Lead</p>
+                </div>
+            </div>
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/shapeaijs.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Successfully Completed JavaScript and ReactJs Bootcamp</p>
+                </div>
+            </div>
+
+
+
+
+
+
+
+            
+
+
+
+
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/grassdoorg.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Received Goodies</p>
+                </div>
+            </div>
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/diwalig.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Diwali Goodies</p>
+                </div>
+            </div>
+
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/hack2021g.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Received Hacktoberfest2021 Goodies</p>
+                </div>
+            </div>
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/hack2020g.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Received Hacktoberfest2020 Goodies</p>
+                </div>
+            </div>
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/bestoutfit.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Best etnic wear winner</p>
+                </div>
+            </div>
+
+
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/apifestg.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>API Fest 2022 Goodies</p>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/ghsfatorpa.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Invited as a guest speaker at Government High School Fatorpa Quepem Goa.</p>
+                </div>
+            </div>
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/beacholymp.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Beach Olympics winner</p>
+                </div>
+            </div>
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/ghskundai.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Invited as a resource person at Government High School Kundai Ponda Goa</p>
+                </div>
+            </div>
+
+            <div class="column miscellaneous">
+                <div class="content">
+                    <img src="./img/hack2021.jpg" alt="Car" style="width:100%" onclick="image(event)">
+                    <h4>MISCELLANEOUS</h4>
+                    <p>Successfully completed Hacktoberfest2021</p>
+                </div>
+            </div>
+
+            <!-- END GRID -->
+        </div>
+
+        <!-- END MAIN -->
+    </div>
+
+    <div>
+        <!-- Trigger the Modal -->
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+        <!-- The Close Button -->
+        <span class="close">&times;</span>
+
+        <!-- Modal Content (The Image) -->
+        <img class="modal-content" id="img01">
+
+        <!-- Modal Caption (Image Text) -->
+        <div id="caption"></div>
+    </div>
+
+    </div>
+
+    <script>
+        filterSelection("all")
+
+        function filterSelection(c) {
+            var x, i;
+            x = document.getElementsByClassName("column");
+            if (c == "all") c = "";
+            for (i = 0; i < x.length; i++) {
+                w3RemoveClass(x[i], "show");
+                if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+            }
+        }
+
+        function w3AddClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                if (arr1.indexOf(arr2[i]) == -1) {
+                    element.className += " " + arr2[i];
+                }
+            }
+        }
+
+        function w3RemoveClass(element, name) {
+            var i, arr1, arr2;
+            arr1 = element.className.split(" ");
+            arr2 = name.split(" ");
+            for (i = 0; i < arr2.length; i++) {
+                while (arr1.indexOf(arr2[i]) > -1) {
+                    arr1.splice(arr1.indexOf(arr2[i]), 1);
+                }
+            }
+            element.className = arr1.join(" ");
+        }
+        // Add active class to the current button (highlight it)
+        var btnContainer = document.getElementById("myBtnContainer");
+        var btns = btnContainer.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+                current[0].className = current[0].className.replace(" active", "");
+                this.className += " active";
+            });
+        }
+
+    // Get the modal
+    var modal = document.getElementById("myModal");
+    
+    // Get the image and insert it inside the modal - use its "alt" text as a caption
+    // var img = $(".myImg");
+    var modalImg = document.getElementById("img01");
+    var captionText = document.getElementById("caption");
+    
+    function image(event)  {    
+        modal.style.display = "block";
+        modalImg.src = event.target.src;
+        // captionText.innerHTML = event.target.alt;
+        captionText.innerHTML = document.querySelector('p').textContent;
+    }
+    
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+    
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    </script>
+
+</body>
+
+</html>
