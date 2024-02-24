@@ -975,7 +975,7 @@
         modal.style.display = "block";
         modalImg.src = event.target.src;
         // captionText.innerHTML = event.target.alt;
-        captionText.innerHTML = document.querySelector('p').textContent;
+        captionText.innerHTML = event.target.nextElementSibling.nextElementSibling.textContent;
     }
     
     // Get the <span> element that closes the modal
